@@ -1,22 +1,177 @@
+/*
+fileName: super_trunfo.c
+Autho: Denis Monteiro
+
+Versão 1 - Objetivo: Criar um programa para ler os dados de 2 cartas para o jogo super Trunfo
+Serão dados referentes a cidades e estados, sendo:
+- Estado
+- Código da carta
+- Nome da cidade
+- População
+- Área (mk2)
+- PIB
+- Número de pontos turísticos
+
+Versão 2 - Objetivo: Calcular a densidade demográfica e a renda per capita da população de cada uma
+das 2 cidades
+Incluir as seguintes variáveis:
+- Densidade demográfica (float)
+- Renda Per Capita (float)
+
+*/
+
 #include <stdio.h>
 
-// Desafio Super Trunfo - Países
-// Tema 1 - Cadastro das Cartas
-// Este código inicial serve como base para o desenvolvimento do sistema de cadastro de cartas de cidades.
-// Siga os comentários para implementar cada parte do desafio.
-//Teste larissa
 
-int main() {
-    // Sugestão: Defina variáveis separadas para cada atributo da cidade.
-    // Exemplos de atributos: código da cidade, nome, população, área, PIB, número de pontos turísticos.
-    
-    // Cadastro das Cartas:
-    // Sugestão: Utilize a função scanf para capturar as entradas do usuário para cada atributo.
-    // Solicite ao usuário que insira as informações de cada cidade, como o código, nome, população, área, etc.
-    
-    // Exibição dos Dados das Cartas:
-    // Sugestão: Utilize a função printf para exibir as informações das cartas cadastradas de forma clara e organizada.
-    // Exiba os valores inseridos para cada atributo da cidade, um por linha.
+float calculoDensidadeDemografica(int populacao, float area) {
 
+    float densidade = 0.0;
+
+    densidade = (float) populacao / area;
+
+    return densidade;
+}
+
+float calculoRendaPerCapita(float pib, int populacao) {
+
+    float rendaPerCapita = 0.0;
+
+    rendaPerCapita = pib / (float) populacao;
+
+    // Retorna a renda per capita em reais.
+    return rendaPerCapita * 1000000000;
+}
+
+int main () {
+
+    // Variaveis para a cidade 1
+    char estado1 = 'Y', codigoCarta1[3] = "01", nomeCidade1[50] = "Nome da cidade 1";
+    int populacao1 = 0, pontosTuristicos1 = 0;
+    float area1 = 0.0, pib1 = 0.0, rendaPerCapita1 = 0.0, densidadeDemo1 = 0.0;
+
+    // Variaveis para a cidade 2
+    char estado2 = 'Z', codigoCarta2[3] = "01", nomeCidade2[50] = "Nome da cidade 2";
+    int populacao2 = 1, pontosTuristicos2 = 1;
+    float area2 = 1.0, pib2 = 1.0, rendaPerCapita2 = 0.0, densidadeDemo2 = 0.0;
+
+    printf ("---------------- JOGO SUPER TRUNFO (Nivel basico) ----------------\n\n");
+    printf ("Entre com os dados para 2 cartas\n");
+
+    // Capturando dados da carta 1
+    printf ("Carta 1\n");
+
+    // Estado
+    printf ("Digite o estado:\n");
+    scanf (" %c", &estado1);
+    printf ("\n");
+
+    // Codigo da carta
+    printf ("Digite o codigo da carta:\n");
+    scanf ("%s", codigoCarta1);
+    printf ("\n");
+
+    // Cidade
+    printf ("Digite o nome da cidade:\n");
+    scanf ("%s", nomeCidade1);
+    printf ("\n");
+
+    // Populacao
+    printf ("Digite a populacao da cidade:\n");
+    scanf ("%d", &populacao1);
+    printf ("\n");
+
+    // Area
+    printf ("Digite a area da cidade:\n");
+    scanf ("%f", &area1);
+    printf ("\n");
+
+    // PIB
+    printf ("Digite o PIB da cidade:\n");
+    scanf ("%f", &pib1);
+    printf ("\n");
+
+    // Pontos turisticos
+    printf ("Digite a quantidade de pontos turisticos da cidade:\n");
+    scanf ("%d", &pontosTuristicos1);
+    printf ("\n");
+
+    // Chama cálculo de densidade demográfica para cidade 1
+    densidadeDemo1 = calculoDensidadeDemografica(populacao1, area1);
+
+    // Chama cálculo de renda per capita para cidade 1
+    rendaPerCapita1 = calculoRendaPerCapita(pib1, populacao1);
+
+    
+    // Capturando dados da carta 2
+    printf ("Carta 2\n");
+
+    // Estado
+    printf ("Digite o estado:\n");
+    scanf (" %c", &estado2);
+    printf ("\n");
+
+    // Codigo da carta
+    printf ("Digite o codigo da carta:\n");
+    scanf ("%s", codigoCarta2);
+    printf ("\n");
+
+    // Cidade
+    printf ("Digite o nome da cidade:\n");
+    scanf ("%s", nomeCidade2);
+    printf ("\n");
+
+    // Populacao
+    printf ("Digite a populacao da cidade:\n");
+    scanf ("%d", &populacao2);
+    printf ("\n");
+
+    // Area
+    printf ("Digite a area da cidade:\n");
+    scanf ("%f", &area2);
+    printf ("\n");
+
+    // PIB
+    printf ("Digite o PIB da cidade:\n");
+    scanf ("%f", &pib2);
+    printf ("\n");
+
+    // Pontos turisticos
+    printf ("Digite a quantidade de pontos turisticos da cidade:\n");
+    scanf ("%d", &pontosTuristicos2);
+    printf ("\n");
+
+    // Chama cálculo de densidade demográfica para cidade 2
+    densidadeDemo2 = calculoDensidadeDemografica(populacao2, area2);
+
+    // Chama cálculo de renda per capita para cidade 2
+    rendaPerCapita2 = calculoRendaPerCapita(pib2, populacao2);
+
+
+    // Impressão dos dados da carta 1
+    printf ("=============Dados da carta 1 ================\n");
+    printf ("Estado: %c\n", estado1);
+    printf ("Codigo da carta: %c%s\n", estado1, codigoCarta1);
+    printf ("Nome da cidade: %s\n", nomeCidade1);
+    printf ("Populacao: %d\n", populacao1);
+    printf ("Area (km2): %.2f\n", area1);
+    printf ("PIB:  R$ %.2f bilhoes\n", pib1);
+    printf ("Pontos turisticos: %d\n", pontosTuristicos1);
+    printf ("Densidade demografica: %.2f hab/km2\n", densidadeDemo1);
+    printf ("Renda Per Capita: R$ %.2f\n", rendaPerCapita1);
+
+    
+    // Impressão dos dados da carta 2
+    printf ("\n=============Dados da carta 2 ================\n");
+    printf ("Estado: %c\n", estado2);
+    printf ("Codigo da carta: %c%s\n", estado2, codigoCarta2);
+    printf ("Nome da cidade: %s\n", nomeCidade2);
+    printf ("Populacao: %d\n", populacao2);
+    printf ("Area (km2): %.2f\n", area2);
+    printf ("PIB:  R$ %.2f bilhoes\n", pib2);
+    printf ("Pontos turisticos: %d\n", pontosTuristicos2);
+    printf ("Densidade demografica: %.2f hab/km2\n", densidadeDemo2);
+    printf ("Renda Per Capita: R$ %.2f\n", rendaPerCapita2);
+
+    
     return 0;
 }
